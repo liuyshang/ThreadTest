@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PostActivity">
+
+    <com.example.lance.threadtest.view.ActionbarView
+        android:id="@+id/actionbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actionbar_view"
+        android:layout_margin="20dp"
+        android:text="hello word" />
+
+    <Button
+        android:id="@+id/bt_encrypt"
+        style="@style/Button"
+        android:layout_alignParentBottom="true"
+        android:text="@string/encrypt" />
+
+    <Button
+        android:id="@+id/bt_decrypt"
+        style="@style/Button"
+        android:layout_above="@+id/bt_encrypt"
+        android:text="@string/decrypt" />
+
+</RelativeLayout>

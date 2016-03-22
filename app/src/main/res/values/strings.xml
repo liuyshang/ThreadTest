@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ThreadTest</string>
+
+    <string name="post_text">boolean post(Runnable r):把一个Runable入队到消息队列中\t\tUI线程从消息队列中
+    取出这个对象后，立即执行</string>
+    <string name="post_delayed_text">boolean postDelayed(Runnable r, long dealyMillis):把一个Runnable
+    入队到消息队列中,\t\tUI线程从消息队列中取出这个对象后。\t\t
+    延迟delayMillis秒后执行</string>
+    <string name="runonuithread_text">利用Activity.runOnUiThread(Runnable)把更新ui的代码创建在Runnable中，\n\n
+        然后在需要更新ui时，把这个Runnable对象传给Activity.runOnUiThread(Runnable)。 </string>
+    <string name="async_task_text">AsyncTask,是android提供的轻量级的异步类,可以直接继承AsyncTask,在类中
+        实现异步操作,并提供接口反馈当前异步执行的程度(可以通过接口实现UI进度更新),最后反馈执行的结果给UI主线程</string>
+
+
+    <string name="send_to_target">SendToTarget</string>
+    <string name="empty_message_delay">EmptyMessageDelayed</string>
+    <string name="empty_message">EmptyMessage</string>
+    <string name="message_delayed">MessageDelayed</string>
+    <string name="message">Message</string>
+    <string name="post">Post</string>
+    <string name="post_delayed">PostDelayed</string>
+    <string name="run_on_ui_thread">RunOnUIThread</string>
+    <string name="encrypt">Encrypt</string>
+    <string name="decrypt">Decrypt</string>
+
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PostActivity">
+
+    <com.example.lance.threadtest.view.ActionbarView
+        android:id="@+id/actionbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/actionbar_view"
+        android:layout_margin="20dp"
+        android:text="hello word" />
+
+    <Button
+        android:id="@+id/bt_message"
+        style="@style/Button"
+        android:layout_alignParentBottom="true"
+        android:text="@string/message" />
+
+    <Button
+        android:id="@+id/bt_message_delayed"
+        style="@style/Button"
+        android:layout_above="@+id/bt_message"
+        android:text="@string/message_delayed" />
+
+    <Button
+        android:id="@+id/bt_empty_message"
+        style="@style/Button"
+        android:layout_above="@+id/bt_message_delayed"
+        android:text="@string/empty_message" />
+
+    <Button
+        android:id="@+id/bt_empty_message_delay"
+        style="@style/Button"
+        android:layout_above="@+id/bt_empty_message"
+        android:text="@string/empty_message_delay" />
+
+    <Button
+        android:id="@+id/bt_send_to_target"
+        style="@style/Button"
+        android:layout_above="@+id/bt_empty_message_delay"
+        android:text="@string/send_to_target" />
+
+</RelativeLayout>
