@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button bt2;
     @ViewInject(R.id.bt3)
     private Button bt3;
+    @ViewInject(R.id.bt4)
+    private Button bt4;
+    @ViewInject(R.id.bt5)
+    private Button bt5;
 
     private Context mContext;
 
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt1.setOnClickListener(this);
         bt2.setOnClickListener(this);
         bt3.setOnClickListener(this);
+        bt4.setOnClickListener(this);
+        bt5.setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +54,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt3:
                 startActivity(new Intent(mContext, AsyncTaskActivity.class));
+                break;
+            case R.id.bt4:
+                startActivity(new Intent(mContext, JavaThreadActivity.class));
+                break;
+            case R.id.bt5:
+                startActivity(new Intent(mContext, ThreadPoolActivity.class));
                 break;
             default:
                 break;

@@ -23,7 +23,7 @@ import java.lang.ref.WeakReference;
  * time: 2016/3/22 11:14
  * e-mail: lance.cao@anarry.com
  */
-public class MessageActivity extends AppCompatActivity implements View.OnClickListener {
+public class MessageActivity extends AppCompatActivity implements View.OnClickListener{
 
     @ViewInject(R.id.actionbar_view)
     private ActionbarView actionbarView;

@@ -61,8 +61,8 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
     private LinearGradient linearGradient;
     /**
      * 变化速度
-     * */
-    private int size;
+     */
+    private int speed;
 
     public LoadingSurfaceView(Context context) {
         this(context, null);
@@ -79,8 +79,6 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
 
     private void init() {
         Log.i(">>>", "init");
-
-
         mHolder = this.getHolder();
         mHolder.addCallback(this);
 
@@ -88,19 +86,19 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
         linearGradient = new LinearGradient(0, 0, radius / 4, radius / 4, ptColor[((int) (Math.random() * 6))],
                 ptColor[((int) (Math.random() * 6))], Shader.TileMode.MIRROR);
 
+        ptWidth = 50;
+        radius = 200;
+        speed = 5;
+        startAngle = 0;
+        sweepAngle = 0;
+
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(ptWidth);
         mPaint.setShader(linearGradient);
 
-        mCanvas = new Canvas();
 
-        startAngle = 0;
-        sweepAngle = 0;
-        size = 5;
-        ptWidth = 40;
-        radius = 70;
         mRectf = new RectF();
         flag = true;
         sflag = true;
@@ -139,6 +137,7 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
             if (mHolder != null)
                 try {
                     mCanvas = mHolder.lockCanvas();
+                    mCanvas.drawColor(Color.WHITE);
                     drawPath();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -153,30 +152,30 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
     private void drawPath() {
         mCanvas.drawArc(mRectf, startAngle, sweepAngle, false, mPaint);
         if (sflag) {
-            startAngle -= size;
-            sweepAngle += 2 * size;
+            startAngle -= speed;
+            sweepAngle += 2 * speed;
         } else {
-            startAngle += size;
-            sweepAngle -= 2 * size;
+            startAngle += speed;
+            sweepAngle -= 2 * speed;
         }
         //sweepAngle = 360 与 sweepAngle = 0 效果一样
         //sweepAngle 小于 0 ，逆时针画圈
-        if (startAngle == -(180 - size) && sweepAngle > 0) {
+        if (startAngle == -(180 - speed) && sweepAngle > 0) {
             startAngle = 0;
             sweepAngle = -360;
             sflag = true;
         }
-        if (startAngle == -(180 - size) && sweepAngle < 0) {
+        if (startAngle == -(180 - speed) && sweepAngle < 0) {
             startAngle = 180;
             sweepAngle = 0;
             sflag = false;
         }
-        if (startAngle == (360 - size) && sweepAngle < 0) {
+        if (startAngle == (360 - speed) && sweepAngle < 0) {
             startAngle = 180;
             sweepAngle = 360;
             sflag = false;
         }
-        if (startAngle == (360 - size) && sweepAngle > 0) {
+        if (startAngle == (360 - speed) && sweepAngle > 0) {
             startAngle = 0;
             sweepAngle = 0;
             sflag = true;
@@ -191,7 +190,7 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
         this.radius = radius;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }

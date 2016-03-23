@@ -6,30 +6,36 @@
     android:orientation="vertical"
     tools:context=".ui.MainActivity">
 
+    <com.example.lance.threadtest.view.ActionbarView
+        android:id="@+id/actionbar_view"
+        android:layout_width="match_parent"
+        android:layout_height="44dp" />
+
     <Button
-        android:id="@+id/bt1"
+        android:id="@+id/bt_volatile"
         style="@style/Button"
         android:layout_marginTop="20dp"
-        android:text="HANDLER_POST" />
+        android:text="VOLATILE" />
 
     <Button
-        android:id="@+id/bt2"
+        android:id="@+id/bt_final"
         style="@style/Button"
-        android:text="HANDLER_MESSAGE" />
+        android:text="FINAL" />
 
     <Button
-        android:id="@+id/bt3"
+        android:id="@+id/bt_synchronized"
         style="@style/Button"
-        android:text="ASYNCTASK" />
+        android:text="SYNCHRONIZED" />
 
     <Button
-        android:id="@+id/bt4"
+        android:id="@+id/bt_lock"
         style="@style/Button"
-        android:text="JAVA-THREAD" />
+        android:text="LOCK" />
 
     <Button
-        android:id="@+id/bt5"
+        android:id="@+id/bt_condition"
         style="@style/Button"
-        android:text="THREAD-POOL" />
+        android:text="CONDITION" />
+
 
 </LinearLayout>

@@ -1,15 +1,66 @@
 <resources>
-    <string name="app_name">ThreadTest</string>
+    <string name="app_name">线程</string>
 
     <string name="post_text">boolean post(Runnable r):把一个Runable入队到消息队列中\t\tUI线程从消息队列中
-    取出这个对象后，立即执行</string>
+        取出这个对象后，立即执行</string>
     <string name="post_delayed_text">boolean postDelayed(Runnable r, long dealyMillis):把一个Runnable
-    入队到消息队列中,\t\tUI线程从消息队列中取出这个对象后。\t\t
-    延迟delayMillis秒后执行</string>
+        入队到消息队列中,\t\tUI线程从消息队列中取出这个对象后。\t\t
+        延迟delayMillis秒后执行</string>
     <string name="runonuithread_text">利用Activity.runOnUiThread(Runnable)把更新ui的代码创建在Runnable中，\n\n
         然后在需要更新ui时，把这个Runnable对象传给Activity.runOnUiThread(Runnable)。 </string>
     <string name="async_task_text">AsyncTask,是android提供的轻量级的异步类,可以直接继承AsyncTask,在类中
         实现异步操作,并提供接口反馈当前异步执行的程度(可以通过接口实现UI进度更新),最后反馈执行的结果给UI主线程</string>
+    <string name="volatile_text">\t\tvolatile关键词：用来对共享变量的访问进行同步，上一次写入操作的结果对下一次
+        读取操作是肯定可见的.\n\t\t在写入volatile变量之后，CPU缓存中的内容会被写回内存；读取volatile变量时，CPU
+        缓存中的对应内容会被置为失效，重新从主存中进行读取。\nvolatile不使用锁，性能优于synchronized关键词</string>
+    <string name="final_text">\t\tfinal关键词声明的域的值只能被初始化一次，一般在构造方法中初始化。\n\t\t
+        当对象中的共享变量的值不可能发生变化时，在多线程中也就不需要同步机制来进行处理，故在多线程中
+        尽可能使用不可变对象，另外，在代码执行时，final域的值可以被保存在寄存器中，而不用从主存中
+        频繁重新读取</string>
+    <string name="synchronized_text">\t\tsynchronized关键字：方法或代码块的虎互斥性来完成实际上的一个原子操作\n
+        \t\t所有的Java对象都有一个与synchronized关联的监视器对象（monitor），允许线程在该监视器对象上进行加锁和解锁操作\n
+        \t\ta、静态方法：Java类对应的Class类的对象所关联的监视器对象。\n
+        \t\tb、实例方法：当前对象实例所关联的监视器对象。\n
+        \t\tc、代码块：代码块声明中的对象所关联的监视器对象。\n
+        \t\t注：当锁被释放，对共享变量的修改会写入主存；当活的锁，CPU缓存中的内容被置为无效。编译器在处理
+        synchronized方法或代码块，不会把其中包含的代码移动到synchronized方法或代码块之外，从而避免了由于
+        代码重排而造成的问题</string>
+    <string name="object_text">\t\twait:当前线程放入，该对象的等待池中，线程A调用了B对象的wait()方法，
+        线程A进入B对象的等待池，并释放等待锁。\n
+        \t\tnotify:将该对象中等待池的线程，随机选取一个放入对象的锁池，当当前线程结束后释放掉锁，
+        锁池中的线程即可竞争对象的锁来获得执行机会。\n
+        \t\tnotifyAll:将对象中等待池中的线程，全部放入锁池。</string>
+    <string name="status_text">\t\ta、方法sleep()进入的阻塞状态，不会释放对象的锁\n
+        \t\tb、方法join()则是主线程等待子线程完成，再往下执行\n
+        \t\tc、方法interrupt()，向被调用的对象线程发起中断请求。\n
+        \t\td、yield()，尝试让出所占有的CPU资源，让其他线程获取运行机会，对操作系统上的调度器来说是个信号，不一定立即切换线程。</string>
+    <string name="lock_text">\t\tLock接口，表示一个锁方法：\n
+        \t\ta、lock(),获取锁，如果无法获取锁，会处于等待状态\n
+        \t\tb、unlock(),释放锁。（一般放在finally代码中）\n
+        \t\tc、lockInterruptibley(),与lock()类似，但允许当前线程在等待获取锁的过程中被中断\n
+        \t\td、tryLock()，以非阻塞方式获取锁，如果无法获取锁，则返回false</string>
+    <string name="readwritelock_text">\t\tReadWriteLock接口，表示两个锁，读取的共享锁和写入的排他锁。
+        （适合常见的读者-写者场景）\n
+        \t\tReadWriteLock接口的readLock和writeLock方法来获取对应的锁的Lock接口的实现。在多数线程读取，
+        少数线程写入的情况下，可以提高多线程的性能，提高使用该数据结构的吞吐量。如果是相反的情况，
+        较多的线程写入，则接口会降低性能。</string>
+    <string name="reentrantlock_text">\t\tReentrantLock类和ReentrantReadWriteLock，分别为上面两个接口的实现类。\n
+        \t\t即允许一个线程多次获取同一个锁（他们会记住上次获取锁并且未释放的线程对象，
+        和加锁的次数，getHoldCount()）同一个线程每次获取锁，加锁数+1，每次释放锁，加锁数-1，到0，
+        则该锁被释放，可以被其他线程获取。</string>
+    <string name="condition_text">\t\tCondition接口，Lock接口代替了synchronized，Condition接口替代了object的wait、nofity。\n
+        \t\ta、await()，使当前线程进入等待状态，知道被唤醒或中断。重载形式可以指定超时时间。\n
+        \t\t b、awaitNanos()，以纳秒为单位等待。\n
+        \t\tc、awaitUntil()，指定超时发生的时间点，而不是经过的时间，参数为java.util.Date。\n
+        \t\td、awaitUninterruptibly()，前面几种会响应其他线程发出的中断请求，他会无视，直到被唤醒。\n
+        \t\te、signal()和signalAll， 相当于 notify和notifyAll\n</string>
+    <string name="thread_pool_text">newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。\n
+        newFixedThreadPool 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。\n
+        newScheduledThreadPool 创建一个定长线程池，支持定时及周期性任务执行。\n
+        newSingleThreadExecutor 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。\n
+        线程池的好处：a. 重用存在的线程，减少对象创建、消亡的开销，性能佳。\n
+        b. 可有效控制最大并发线程数，提高系统资源的使用率，同时避免过多资源竞争，避免堵塞。\n
+        c. 提供定时执行、定期执行、单线程、并发数控制等功能。\n</string>
 
 
     <string name="send_to_target">SendToTarget</string>
