@@ -11,13 +11,14 @@ import android.widget.TextView;
 
 import com.example.lance.threadtest.R;
 import com.example.lance.threadtest.util.OnClickBackListener;
+import com.example.lance.threadtest.util.OnLongClickBackListener;
 
 /**
  * author: admin
  * time: 2016/3/15 12:14
  * e-mail: lance.cao@anarry.com
  */
-public class ActionbarView extends FrameLayout implements View.OnClickListener {
+public class ActionbarView extends FrameLayout implements View.OnClickListener,View.OnLongClickListener{
 
     /**
      * 返回按钮
@@ -30,6 +31,7 @@ public class ActionbarView extends FrameLayout implements View.OnClickListener {
 
     private View view;
     private OnClickBackListener mListener;
+    private OnLongClickBackListener lListener;
 
     public ActionbarView(Context context) {
         this(context, null);
@@ -50,6 +52,7 @@ public class ActionbarView extends FrameLayout implements View.OnClickListener {
         ivBack = (ImageView) view.findViewById(R.id.iv_back);
         tvTitle = (TextView) view.findViewById(R.id.tv_title);
         ivBack.setOnClickListener(this);
+        ivBack.setOnLongClickListener(this);
     }
 
     public void setTvTitle(String str) {
@@ -76,5 +79,21 @@ public class ActionbarView extends FrameLayout implements View.OnClickListener {
 
     public void setOnClickBackListener(OnClickBackListener listener) {
         this.mListener = listener;
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_back:
+                lListener.onLongClickBack();
+                break;
+            default:
+                break;
+        }
+        return false;
+    }
+
+    public void setOnLongClickBackListener(OnLongClickBackListener listener) {
+        this.lListener = listener;
     }
 }

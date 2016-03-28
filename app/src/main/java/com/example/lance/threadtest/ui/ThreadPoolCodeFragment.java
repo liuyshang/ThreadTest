@@ -1,8 +1,12 @@
 package com.example.lance.threadtest.ui;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,15 +36,23 @@ public class ThreadPoolCodeFragment extends Fragment implements View.OnClickList
     private Button btNewSingleThreadExecutor;
 
     private View view;
+    private Context mContext;
+    private OnClickThreadPoolListener mListener;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Log.i(">>>","ThreadPoolCodeFragment onCreateView");
         view = inflater.inflate(R.layout.fragment_thread_pool_code, container, false);
         Injector.initInjectedView(this, view);
+        mContext = getActivity();
+        init();
         setListener();
-        tvInfo.setText(getResources().getString(R.string.thread_pool_text));
         return view;
+    }
+
+    private void init() {
+        tvInfo.setText(getResources().getString(R.string.thread_pool_text));
     }
 
     private void setListener() {
@@ -54,16 +66,24 @@ public class ThreadPoolCodeFragment extends Fragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_newCachedThreadPool:
-
+                if (mListener != null) {
+                    mListener.onClickCached();
+                }
                 break;
             case R.id.bt_newFixedThreadPool:
-
+                if (mListener != null) {
+                    mListener.onClickFixed();
+                }
                 break;
             case R.id.bt_newScheduledThreadPool:
-
+                if (mListener != null) {
+                    mListener.onClickScheduled();
+                }
                 break;
             case R.id.bt_newSingleThreadExecutor:
-
+                if (mListener != null) {
+                    mListener.onClickSingle();
+                }
                 break;
             default:
                 break;
@@ -73,5 +93,23 @@ public class ThreadPoolCodeFragment extends Fragment implements View.OnClickList
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.i(">>>", "ThreadPoolCodeFragment onDestroyView");
+    }
+
+    /**
+     * 定义接口
+     */
+    public interface OnClickThreadPoolListener {
+        void onClickCached();
+
+        void onClickFixed();
+
+        void onClickScheduled();
+
+        void onClickSingle();
+    }
+
+    public void setOnClickThreadPoolListener(OnClickThreadPoolListener listener) {
+        this.mListener = listener;
     }
 }

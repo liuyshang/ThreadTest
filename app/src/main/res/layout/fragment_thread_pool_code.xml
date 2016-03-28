@@ -2,33 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_info"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/bt_newCachedThreadPool"
-        style="@style/Button"
-        android:layout_marginTop="20dp"
-        android:text="NEWCACHETHREADPOOL" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bt_newFixedThreadPool"
-        style="@style/Button"
-        android:text="NEWFIXEDTHREADPOOL" />
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
 
-    <Button
-        android:id="@+id/bt_newScheduledThreadPool"
-        style="@style/Button"
-        android:text="NEWSCHEDULEDTHREADPOOL" />
+            <Button
+                android:id="@+id/bt_newCachedThreadPool"
+                style="@style/Button"
+                android:layout_marginTop="20dp"
+                android:text="NEWCACHETHREADPOOL" />
 
-    <Button
-        android:id="@+id/bt_newSingleThreadExecutor"
-        style="@style/Button"
-        android:text="NEWSINGLETHREADEXECUTOR" />
+            <Button
+                android:id="@+id/bt_newFixedThreadPool"
+                style="@style/Button"
+                android:text="NEWFIXEDTHREADPOOL" />
+
+            <Button
+                android:id="@+id/bt_newScheduledThreadPool"
+                style="@style/Button"
+                android:text="NEWSCHEDULEDTHREADPOOL" />
+
+            <Button
+                android:id="@+id/bt_newSingleThreadExecutor"
+                style="@style/Button"
+                android:text="NEWSINGLETHREADEXECUTOR" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
