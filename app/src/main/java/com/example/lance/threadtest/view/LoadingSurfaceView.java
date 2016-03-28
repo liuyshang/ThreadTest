@@ -86,8 +86,8 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
         linearGradient = new LinearGradient(0, 0, radius / 4, radius / 4, ptColor[((int) (Math.random() * 6))],
                 ptColor[((int) (Math.random() * 6))], Shader.TileMode.MIRROR);
 
-        ptWidth = 50;
-        radius = 200;
+        ptWidth = 20;
+        radius = 100;
         speed = 5;
         startAngle = 0;
         sweepAngle = 0;
@@ -126,6 +126,7 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        flag = false;
         Log.i(">>>", "surfaceDestroyed");
     }
 
@@ -134,22 +135,23 @@ public class LoadingSurfaceView extends SurfaceView implements Runnable, Surface
         Log.i(">>>", "run");
         while (flag) {
             //返回键报错处理
-            if (mHolder != null)
-                try {
-                    mCanvas = mHolder.lockCanvas();
-                    mCanvas.drawColor(Color.WHITE);
+            try {
+                mCanvas = mHolder.lockCanvas();
+                if (mCanvas != null) {
                     drawPath();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (mCanvas != null) {
-                        mHolder.unlockCanvasAndPost(mCanvas);
-                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (mCanvas != null) {
+                    mHolder.unlockCanvasAndPost(mCanvas);
+                }
+            }
         }
     }
 
     private void drawPath() {
+        mCanvas.drawColor(Color.WHITE);
         mCanvas.drawArc(mRectf, startAngle, sweepAngle, false, mPaint);
         if (sflag) {
             startAngle -= speed;

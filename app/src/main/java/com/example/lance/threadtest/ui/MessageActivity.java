@@ -23,7 +23,7 @@ import java.lang.ref.WeakReference;
  * time: 2016/3/22 11:14
  * e-mail: lance.cao@anarry.com
  */
-public class MessageActivity extends AppCompatActivity implements View.OnClickListener{
+public class MessageActivity extends AppCompatActivity implements View.OnClickListener {
 
     @ViewInject(R.id.actionbar_view)
     private ActionbarView actionbarView;
@@ -49,6 +49,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_message);
         Injector.initInjectedView(this);
         mContext = MessageActivity.this;
+        tvText.setText("handler->message");
         setListener();
     }
 
@@ -81,6 +82,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                 }).start();
                 break;
             case R.id.bt_message_delayed:
+                tvText.setText("");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -100,6 +102,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                 }).start();
                 break;
             case R.id.bt_empty_message_delay:
+                tvText.setText("");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {

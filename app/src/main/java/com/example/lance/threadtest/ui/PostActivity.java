@@ -42,7 +42,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_post);
         Injector.initInjectedView(this);
         mContext = PostActivity.this;
-        tvText.setText(getResources().getString(R.string.app_name));
+        tvText.setText("handler->post");
         setListener();
     }
 
@@ -75,6 +75,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
                 }).start();
                 break;
             case R.id.bt_post_delayed:
+                tvText.setText("");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
